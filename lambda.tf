@@ -1,6 +1,7 @@
 resource "aws_lambda_function" "teja_world_lambda" {
   function_name = "teja-world-backend"
   runtime       = "python3.9"
+  source_code_hash = filebase64sha256("lambda.zip")
   handler       = "lambda_function.lambda_handler"
   filename      = "lambda.zip"
   role          = aws_iam_role.lambda_exec.arn
